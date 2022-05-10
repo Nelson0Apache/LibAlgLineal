@@ -1,4 +1,4 @@
-import re
+from logging import exception
 import numpy as np
 
 
@@ -34,11 +34,16 @@ def sumarMatrizNxN(Ma1, Ma2):
     Toma dos matrices como entrada, primero verifica si tienen la misma dimesion, luego si la matriz es cuadrada y si es así devuelve 
     la suma de las dos matrices.
     """
-    if len(Ma1) != len(Ma2):
-        raise ArithmeticError("No tienen la misma cantidad de fila")
-    
-    if len(Ma1[0]) != len(Ma2[0]):
-        raise ArithmeticError("No tienen la misma cantidad de columna")
+    try:
+        if len(Ma1) != len(Ma2):
+            raise exception("No tienen la misma cantidad de fila")
+    except exception as error:
+        print(error) 
+    try:
+        if len(Ma1[0]) != len(Ma2[0]):
+            raise exception("No tienen la misma cantidad de columna")
+    except exception as error:
+        print(error)
     
     if len(Ma1) == len(Ma1[0]):
 
@@ -50,10 +55,34 @@ def sumarMatrizNxN(Ma1, Ma2):
             sumarMatriz.append(fila)              
     return(sumarMatriz)
       
-Ma1 = [[1, 2], [3, 4]]
-Ma2 = [[4, 8], [9, 5]]
+def multiplicarMatricesNxN(Ma1, Ma2):
+    """
+    Toma dos matrices como entrada, primero verifica si tienen la misma dimesion, luego si la matriz es cuadrada y si es así devuelve 
+    la multiplica  las dos matrices.
+    """
+    try:
+        if len(Ma1) != len(Ma2):
+            raise exception("No tienen la misma cantidad de fila")
+    except exception as error:
+        print(error) 
+    try:
+        if len(Ma1[0]) != len(Ma2[0]):
+            raise exception("No tienen la misma cantidad de columna")
+    except exception as error:
+        print(error) 
+    
+    if len(Ma1) == len(Ma1[0]):
+        mult_M1M2 = []
+        for i in range (len(Ma1)):
+            mult_M1M2.append([])
+            for j in range (len(Ma2[0])):
+                mult_M1M2[i].append(0)
 
-print(sumarMatrizNxN(Ma1, Ma2))
+        for i in range(len(Ma1)): 
+            for j in range(len(Ma2[0])):
+                for d in range(len(Ma1[0])):
+                    mult_M1M2[i][j] += Ma1[i][d]*Ma2[d][j]
+        return mult_M1M2
 
 
 
