@@ -83,3 +83,18 @@ def multiplicarMatricesNxN(Ma1, Ma2):
                 for d in range(len(Ma1[0])):
                     mult_M1M2[i][j] += Ma1[i][d]*Ma2[d][j]
         return mult_M1M2
+
+def matricesConmutativa(Ma1, Ma2):
+    """
+    Toma dos matrices como entrada, primero las multiplica en un orden, después las multiplica en el
+    orden contrario; si el producto de las dos matrices son iguales, imprime las matrices son conmutables
+    si no son iguales imprime que no son conmutable
+    """
+    multiplicacion1 = multiplicarMatricesNxN(Ma1, Ma2)
+    multiplicacion2 = multiplicarMatricesNxN(Ma2, Ma1)
+
+    if multiplicacion1 == multiplicacion2:
+        print("Las matrices {} y {} son conmutables" .format(multiplicacion1, multiplicacion2))
+    else:
+        print("Las matrices no son conmutables")
+
