@@ -83,6 +83,3 @@ def multiplicarMatricesNxN(Ma1, Ma2):
                 for d in range(len(Ma1[0])):
                     mult_M1M2[i][j] += Ma1[i][d]*Ma2[d][j]
         return mult_M1M2
-
-
-
