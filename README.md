@@ -1,5 +1,5 @@
 ***# LibAlgLineal***
-'''
+´´´
 Este es una libreria de algebra lineal con un uso exclusivamente de la libreria numpy para desarrollar un sistema de ecuaciones,
 el metodo para desarrollar el sistema de ecuciones es el  metodo matriz inversa, tiene un archivo "prueba.py" para la prueba de
 la libreria.
@@ -10,5 +10,4 @@ la misma toma dos matrices nxn y por medio de ciclos convierte una matriz nueva 
 orde contrario, si el resultado es igual la funcion arroja que son conmutativas o por el contrario arroja que no son conmutables. Tambien se creo una funcion extra que es multiplicar una matriz por un vector esto para poder crear la funcion de sistema de ecuciones.
 
 Nelson Enrique Apache Molina
-
-'''
+´´´
