@@ -95,36 +95,61 @@ def matricesConmutativa(Ma1, Ma2):
         print("Las matrices {} y {} son conmutables" .format(multiplicacion1, multiplicacion2))
     else:
         print("Las matrices no son conmutables")
-    return "fin :D"
+    return exit()
 
 
-def productoPun(Ma1, Ma2):
-    if len(Ma1) == len(Ma2):
-        suma = 0
-        for i in range(len(Ma1)):
-            suma += Ma1[i]*Ma2[i]
+"""
+def cramer(A , b):
+    n = len(b)
+    D = np.linalg.det(A)
+    x = np.zeros(n)
+    for i in range(n):
+        Ai = A.copy()
+        Ai[:, i] = b
+        Di = np.linalg.det(Ai)
+        x[i] =Di/D
+    return("x", i+1, "=", round(x[i], 10))
+"""
+def multiplicarMatrizVector(Ma1, Vec):
+    """
+    Toma una matriz y un vector como entrada y devuelve el producto de los dos
+    """
+    if len(Ma1[0]) == len(Vec):
+        mult_M1M2 = [] 
+        for i in range (len(Ma1)):
+            mult_M1M2.append([])
+            for p in range (len(Vec[0])):
+                mult_M1M2[i].append(0)
+        for i in range(len(Ma1)): 
+            for p in range(len(Vec[0])):  
+                for d in range(len(Ma1[0])):
+                    mult_M1M2[i][p] += Ma1[i][d]*Vec[d][p]
+        
+        return mult_M1M2
+
+def sistemaEcuacionesMatrizInversa():    
+    """
+   Toma una matriz cuadrada y un vector y devuelve la solucion de sistema de ecuaciones llamando a la funcion
+   del producto matriz con vector, si el sistema de ecuaciones tiene solucion arroja el resultado y si no tiene 
+   solucion arroja la palabra del else.
+    """
     
-    return(suma)
-
-
-
-def sistemaEcuaciones():    
     
-
     matriz = matrizCuadrada()
-    a = np.linalg.inv(matriz) 
+    matrizInv = np.linalg.inv(matriz) 
     
     N = eval(input("ingrese el tamaño del vector: "))
-    L = []
+    vector = []
     for i in range(N):
         i += 1
-        numero = eval(input("Ingrese un numero: "))
-        L.append(numero)
-    
-    resultado = productoPun(a,L)
+        numero = eval(input("Introducir los componentes del vector ({}): " .format(i)))
+        vector.append([numero])
+        resultado = multiplicarMatrizVector(matrizInv, vector)
+    if resultado != None:
+        print("La solucion del sistema de ecuaciones es: ", resultado)
+    else:
+        print("No tiene solucion unica")  
+    return exit()
 
-    return resultado
-
-print(sistemaEcuaciones())
 
 
