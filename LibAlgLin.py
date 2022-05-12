@@ -97,6 +97,17 @@ def matricesConmutativa(Ma1, Ma2):
         print("Las matrices no son conmutables")
     return "fin :D"
 
+
+def productoPun(Ma1, Ma2):
+    if len(Ma1) == len(Ma2):
+        suma = 0
+        for i in range(len(Ma1)):
+            suma += Ma1[i]*Ma2[i]
+    
+    return(suma)
+
+
+
 def sistemaEcuaciones():    
     
 
@@ -106,15 +117,13 @@ def sistemaEcuaciones():
     N = eval(input("ingrese el tamaño del vector: "))
     L = []
     for i in range(N):
+        i += 1
         numero = eval(input("Ingrese un numero: "))
         L.append(numero)
+    
+    resultado = productoPun(a,L)
 
-    if len(a) == len(L):
-        suma = 0
-        for i in range(len(L)):
-            suma = L[i]*a[i] + suma  
-            
-    return suma
+    return resultado
 
 print(sistemaEcuaciones())
 
