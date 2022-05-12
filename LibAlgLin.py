@@ -83,14 +83,31 @@ def multiplicarMatricesNxN(Ma1, Ma2):
                     mult_M1M2[i][j] += Ma1[i][d]*Ma2[d][j]
         return mult_M1M2
 
+def multiplicarMatrizVector(Ma1, Vec):
+    """
+    Toma una matriz y un vector como entrada y devuelve el producto de los dos
+    """
+    if len(Ma1[0]) == len(Vec):
+        mult_M1M2 = [] 
+        for i in range (len(Ma1)):
+            mult_M1M2.append([])
+            for p in range (len(Vec[0])):
+                mult_M1M2[i].append(0)
+        for i in range(len(Ma1)): 
+            for p in range(len(Vec[0])):  
+                for d in range(len(Ma1[0])):
+                    mult_M1M2[i][p] += Ma1[i][d]*Vec[d][p]
+        
+        return mult_M1M2
+
 def matricesConmutativa(Ma1, Ma2):
     """
     Toma dos matrices como entrada, primero las multiplica en un orden, después las multiplica en el
     orden contrario; si el producto de las dos matrices son iguales, imprime las matrices son conmutables
     si no son iguales imprime que no son conmutable
     """
-    multiplicacion1 = multiplicarMatricesNxN(Ma1, Ma2)
-    multiplicacion2 = multiplicarMatricesNxN(Ma2, Ma1)
+    multiplicacion1 = multiplicarMatrizVector(Ma1, Ma2)
+    multiplicacion2 = multiplicarMatrizVector(Ma2, Ma1)
     if multiplicacion1 == multiplicacion2:
         print("Las matrices {} y {} son conmutables" .format(multiplicacion1, multiplicacion2))
     else:
@@ -110,22 +127,7 @@ def cramer(A , b):
         x[i] =Di/D
     return("x", i+1, "=", round(x[i], 10))
 """
-def multiplicarMatrizVector(Ma1, Vec):
-    """
-    Toma una matriz y un vector como entrada y devuelve el producto de los dos
-    """
-    if len(Ma1[0]) == len(Vec):
-        mult_M1M2 = [] 
-        for i in range (len(Ma1)):
-            mult_M1M2.append([])
-            for p in range (len(Vec[0])):
-                mult_M1M2[i].append(0)
-        for i in range(len(Ma1)): 
-            for p in range(len(Vec[0])):  
-                for d in range(len(Ma1[0])):
-                    mult_M1M2[i][p] += Ma1[i][d]*Vec[d][p]
-        
-        return mult_M1M2
+
 
 def sistemaEcuacionesMatrizInversa():    
     """
