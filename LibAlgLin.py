@@ -2,7 +2,6 @@ from logging import exception
 import numpy as np
 
 
-
 def matrizCuadrada():
     """
     Esta función toma un número del usuario el cual dará el tamaño de la matriz, luego le pide al usuario
@@ -23,7 +22,7 @@ def matrizCuadrada():
                     j += 1
                     numeros = (eval(input("Introducir los componentes de la matriz ({}, {}): " .format(i , j)))) 
                     fila.append(numeros)
-                    matriz.append(fila)
+                matriz.append(fila)
         except:
             print("Ingreso un str y el codigo solo sirve para numeros ya sean int o float")  
     return(matriz)  
@@ -92,9 +91,31 @@ def matricesConmutativa(Ma1, Ma2):
     """
     multiplicacion1 = multiplicarMatricesNxN(Ma1, Ma2)
     multiplicacion2 = multiplicarMatricesNxN(Ma2, Ma1)
-
     if multiplicacion1 == multiplicacion2:
         print("Las matrices {} y {} son conmutables" .format(multiplicacion1, multiplicacion2))
     else:
         print("Las matrices no son conmutables")
+    return "fin :D"
+
+def sistemaEcuaciones():    
+    
+
+    matriz = matrizCuadrada()
+    a = np.linalg.inv(matriz) 
+    
+    N = eval(input("ingrese el tamaño del vector: "))
+    L = []
+    for i in range(N):
+        numero = eval(input("Ingrese un numero: "))
+        L.append(numero)
+
+    if len(a) == len(L):
+        suma = 0
+        for i in range(len(L)):
+            suma = L[i]*a[i] + suma  
+            
+    return suma
+
+print(sistemaEcuaciones())
+
 
