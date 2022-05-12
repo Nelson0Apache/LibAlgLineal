@@ -116,6 +116,7 @@ def matricesConmutativa(Ma1, Ma2):
 
 
 """
+Ignorar
 def cramer(A , b):
     n = len(b)
     D = np.linalg.det(A)
